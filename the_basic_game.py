@@ -15,6 +15,8 @@ def fight(commander1,commander2):
     #getting the length of the soldiers in each commanders army
     #infinite while loop until the results come in
     print('\n\n')
+    print(commander1)
+    print(commander2)
     while True:
         if(len(commander1) and len(commander2)):
             #calling the 
@@ -81,15 +83,14 @@ def individual_fight(commander1_soldier,commander2_soldier):
 #Building a tool here 
 
 
-def select_army_commander1():
+def select_army_commander1(commander1,commander2,commander1_money,commander2_money):
     print('\n\n')
     print('Commander 1 chooses first')
     print('Each commander has $10 with them and each unit costs $1')
     print('A:Archer, S:Soldier, K:Knight, D:Done')
     question = 'Choice'
     prompt = '[A/S/K/D] '
-    global commander1_money
-    global commander1
+    
     
     while True:
         # converting integer to string
@@ -99,7 +100,7 @@ def select_army_commander1():
         valid = {"D": True, "A": True, "S": True, "K": True, "d": True, "a": True, "s": True, "k": True}
         if (choice in valid and commander1_money > 1) :
             if(choice == 'D' or choice == 'd'):
-                select_army_commander2()
+                select_army_commander2(commander1,commander2,commander1_money,commander2_money)
                 return True
             elif(choice == 'A' or choice == 'a'):
                 commander1.append('Archer')
@@ -112,22 +113,20 @@ def select_army_commander1():
                 commander1_money = commander1_money - 1
         elif (commander1_money == 1):
             print('The Commander is out of money!!')
-            select_army_commander2()
+            select_army_commander2(commander1,commander2,commander1_money,commander2_money)
             return True
         else:    
             sys.stdout.write("Please respond with [A/S/K/D]\n")
 
 
-def select_army_commander2():
+def select_army_commander2(commander1,commander2,commander1_money,commander2_money):
     print('\n\n')
     print('Commander 2 chooses now')
     print('Each commander has $10 with them and each unit costs $1')
     print('A:Archer, S:Soldier, K:Knight, D:Done')
     question = 'Choice'
     prompt = '[A/S/K/D] '
-    global commander2_money
-    global commander2
-    global commander1
+    
     while True:
         # converting integer to string
         money = '($'+str(commander2_money)+'): '
@@ -137,7 +136,7 @@ def select_army_commander2():
                  "d": True, "a": True, "s": True, "k": True}
         if (choice in valid and commander2_money > 1):
             if(choice == 'D' or choice == 'd'):
-                start_battle()
+                start_battle(commander1,commander2,commander1_money,commander2_money)
                 return True
             elif(choice == 'A' or choice == 'a'):
                 commander2.append('Archer')
@@ -150,13 +149,13 @@ def select_army_commander2():
                 commander2_money = commander2_money - 1
         elif (commander1_money == 1):
             print('The Commander is out of money!!')
-            start_battle()
+            start_battle(commander1, commander2,commander1_money, commander2_money)
             return True
         else:
             sys.stdout.write("Please respond with [A/S/K/D]\n")
 
 
-def start_game():
+def start_game(commander1,commander2,commander1_money,commander2_money):
     print('\n')
     print('#COMBAT')
     print('\n')
@@ -175,14 +174,14 @@ def start_game():
         choice = input()
         valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
         if choice in valid:
-            select_army_commander1()
+            select_army_commander1(commander1,commander2,commander1_money,commander2_money)
             return True
         else:
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
     
 
-def start_battle():
+def start_battle(commander1,commander2,commander1_money,commander2_money):
     print('\n')
     print('#BATTLE')
     
@@ -204,4 +203,4 @@ def start_battle():
 
 
 
-start_game()
+start_game(commander1,commander2,commander1_money,commander2_money)
