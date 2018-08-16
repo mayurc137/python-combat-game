@@ -157,7 +157,7 @@ def select_army_commander1(commander1,commander2,commander1_money,commander2_mon
         else:
             money = '($'+str(commander1_money)+'): '
             sys.stdout.write(question + prompt + money)
-            choice = raw_input()
+            choice = input()
             valid = {"D": True, "A": True, "S": True, "K": True, "d": True, "a": True, "s": True, "k": True, "M": True, "m": True, "E": True, "e": True, "W": True, "w": True}
             if (choice in valid and commander1_money > 0) :
                 if(choice == 'D' or choice == 'd'):
@@ -205,7 +205,7 @@ def select_army_commander2(commander1,commander2,commander1_money,commander2_mon
         else:
             money = '($'+str(commander2_money)+'): '
             sys.stdout.write(question + prompt + money)
-            choice = raw_input()
+            choice = input()
             valid = {"D": True, "A": True, "S": True, "K": True, "d": True, "a": True, "s": True, "k": True, "M": True, "m": True, "E": True, "e": True, "W": True, "w": True}
             if (choice in valid and commander2_money > 0):
                 if(choice == 'D' or choice == 'd'):
@@ -251,7 +251,7 @@ def start_game(commander1,commander2,commander1_money,commander2_money,commander
     while True:
 
         sys.stdout.write(question + prompt)
-        choice = raw_input()
+        choice = input()
         valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
         if choice in valid:
             select_army_commander1(commander1,commander2,commander1_money,commander2_money,commander1_medics,commander2_medics)
@@ -271,7 +271,7 @@ def start_battle(commander1,commander2,commander1_money,commander2_money,command
     while True:
 
         sys.stdout.write(question + prompt)
-        choice = raw_input()
+        choice = input()
         valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
         if choice in valid:
             sys.stdout.write("Let the Battle Begin")
